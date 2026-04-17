@@ -1,4 +1,8 @@
-# Markdown Cheat sheet
+# <span style="color:green">Markdown Cheat sheet</span>
+
+---
+
+<p><span style="color:pink">Note: Almost all HTML tags work so you can actually skip almost all of these</p>
 
 ---
 
