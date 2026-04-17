@@ -2,7 +2,8 @@
 
 ---
 
-<p><span style="color:pink">Note: Almost all HTML tags work so you can actually skip almost all of these</p>
+* <p><span style="color:pink">Almost all HTML tags work so you can actually skip almost all of these</p>
+* <p><span style="color:pink">Look at the raw code of this one</p>
 
 ---
 
