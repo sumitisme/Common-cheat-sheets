@@ -22,12 +22,15 @@
 
 <strong>bold text</strong>
 <br>
-<em>Italic<em>
+<em>Italic</em>
 <br>
 
-**bold + italic**
-<br>
 *italic*
+<br>
+**bold**
+<br>
+***bold + italic***
+<br>
 
 ---
 
