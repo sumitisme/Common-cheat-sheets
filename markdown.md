@@ -31,6 +31,7 @@
 <br>
 ***bold + italic***
 <br>
+~~Crossing lines~~
 
 ---
 
