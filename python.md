@@ -159,4 +159,62 @@ r"This is a raw python\ttext"       # This is a raw python\ttext
 abs(-5)             # 5
 round(3.7)          # 4
 round(3.14159, 2)   # 3.14
+min(3, 1, 2)        # 1
+max(3, 1, 2)        # 3
+sum([1, 2, 3])      # 6
+```
+---
+
+# Conditionals
+
+---
+
+## If-Elif-Else
+
+```py
+if age < 13:
+    category = "child"
+elif age < 20:
+    category = "teenager"
+else:
+    category = "adult"
+```
+---
+
+## Comparison Operators
+
+```py
+x == y  # Equal to
+x != y  # Not Equal to
+x < y   # Less than
+x > y   # Greater than
+x >= y  # Greater than or Equal to
+x <= y  # Less than or Equal to
+```
+---
+
+## Logical Operators
+
+<p>Just use the words themselves. Simple and clear.</p><br>
+
+```py
+if age >= 18 and has_car:
+    print("Guy has car wau")
+if is_weekend or is_holiday:
+    print("No school")
+if not is_raining:
+    print("You can go outside.")
+```
+---
+
+# Loops
+
+---
+
+## For Loops
+
+```py
+# Looping through a range
+for i in range(5):      # 0, 1, 2, 3, 4
+    print(i) 
 ```
