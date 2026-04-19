@@ -217,4 +217,53 @@ if not is_raining:
 # Looping through a range
 for i in range(5):      # 0, 1, 2, 3, 4
     print(i) 
+
+# Looping through a list
+fruits = ["Apple", "Banana"]
+for variable in fruits:
+    print(variable)     
+
+    # Apple
+    # Banana
+
+# You can actually combine text formatting and you can number the data in this
+fruits = ["Apple", "Banana"]
+for i, variable in enumerate(fruits):
+    print(f"{i}: {variable}") 
+    
+    # 0: Apple
+    # 1: Banana
+```
+---
+
+## While Loops
+
+```py
+while True:
+    user_input = input("Enter 'quit' to exit: ")
+    if user_input == "quit":
+        break
+    print(f"You entered: {user_input}")
+```
+---
+
+## Loop Control
+
+```py
+for i in range(10):
+    if i == 3:
+        continue    # skip that particular iteration if condition is met
+    if i == 7:
+        break       # Exit loop
+    print(i)
+```
+---
+
+# Functions
+
+---
+
+## Defining Functions
+
+```py
 ```
