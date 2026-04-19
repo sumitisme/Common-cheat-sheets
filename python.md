@@ -2,9 +2,10 @@
 ---
 
 <p>
-<span style="color:pink">These commands are being run on the shell, not the .py program</span>
+<span style="color:pink">A lot of these commands are being run on the shell, not the .py program</span>
 </p>
 
+# Random Basics (Shell part and normal assignments)
 ---
 
 ## Starting the interactive shell
@@ -61,6 +62,10 @@ counter += 1            # increments the value of counter and assigns it to coun
 numbers += [4, 5]       # Extends the existing list "numbers" by appending [4, 5] to it
 permissions |= write    # bitwise "or" i.e. "|" operation is done between permissions and write and result is put in permissions
 ```
+---
+
+# Strings
+
 ---
 
 ## Creating Strings
@@ -128,4 +133,30 @@ template.format(name = "Jesus", age = 2)
 ```py
 "This is a normal python\ttext"     # This is a normal python   text
 r"This is a raw python\ttext"       # This is a raw python\ttext
+```
+---
+
+# Mathematical Operations
+
+---
+
+## Arithmetics
+
+```py
+10 + 3      # 13
+10 - 3      # 7
+10 * 3      # 30
+10 / 3      # 3.3333333333333335
+10 // 3     # 3
+10 % 3      # 1
+2 ** 3      # 8
+```
+---
+
+## Extra functions to use
+
+```py
+abs(-5)             # 5
+round(3.7)          # 4
+round(3.14159, 2)   # 3.14
 ```
