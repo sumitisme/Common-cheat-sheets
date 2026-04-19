@@ -266,4 +266,48 @@ for i in range(10):
 ## Defining Functions
 
 ```py
+def greet():
+    return "Hello!"
+
+def greet_person(name):
+    return f"Hello, {name}!"
+
+def add(x, y = 10):         # Default Parameter
+    return x + y
 ```
+---
+
+## Calling the functions
+
+```py
+greet()                 # "Hello!"
+greet_person("Kaiki")   # "Hello, Kaiki!"
+add(5, 3)               # 8
+add(7)                  # 17
+```
+---
+
+## Return values
+
+```py
+def get_min_max(numbers):
+    return min(numbers), max(numbers)
+    
+minimum, maximum = get_min_max([1, 5, 3]) # Since this function returns two values, so it needs two receivers
+```
+---
+
+## Some Built-in functions
+
+<p>I don't use all of these on a regular basis but some of these are super helpful</p><br>
+
+```py
+callable()  # Checks if the object can be called as a function
+dir()       # Lists attributes and methods
+globals()   # Get a dictionary of the current global symbol table. Global symbol table being the list of all globally defined symbols
+hash()      # Get the hash value
+id()        # Get the unique identifier
+locals()    # Get a dictionary of the current local symbol table
+repr()      # Get a string representation for debugging
+```
+
