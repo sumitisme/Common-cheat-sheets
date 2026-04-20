@@ -310,4 +310,78 @@ id()        # Get the unique identifier
 locals()    # Get a dictionary of the current local symbol table
 repr()      # Get a string representation for debugging
 ```
+---
 
+## Lambda functions
+
+```py
+square = lambda x: x**2 # lambda is somewhat like a Macro. Basically a mini function
+result = square(5)
+
+# With Map and filter
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x**2, numbers))            # Squares every number in the list. so squared = [1, 4, 9, 16]
+evens   = list(filter(lambda x: x % 2 == 0, numbers))   # Checks which of the data is even and only stores that as the result. [2, 4] is stored in this case
+```
+
+---
+
+# Classes
+
+---
+
+## Defining classes
+
+```py
+class Dog:
+    def __init__(self, name, age): # Constructor (initializer)
+        self.name = name
+        self.age = age
+
+    def bark(self):     # You need "self" here if you want to use the data associated with the class
+        return f"{self.name} says Woof!"
+
+# Creating an instance of the class
+my_dog = Dog("Dawg", 3)
+
+# Accessing the bark function as a method
+print(my_dog.bark()) # Dawg says Woof!
+```
+---
+
+## Class Attributes and Methods
+
+```py
+class Cat:
+    species = "Felis catus"
+
+    def __init__(self, name):
+        self.name = name
+
+    def meow(self):
+        return f"{self.name} says Meow!"
+
+    @classmethod
+    def create_kitten(cls, name): # This receieves the class itself "cls" and This uses the "factory" pattern from the gang of four book 
+        return cls(f"Baby {name}")
+
+
+c = Cat("Luna")
+k = Cat.create_kitten("Luna") # can be done, so the name of the cat becomes "Baby Luna"
+```
+---
+
+## Inheritance
+
+```py
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass # Use pass if you want to keep a function empty
+    
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} barks!"
+```
