@@ -385,3 +385,46 @@ class Dog(Animal):
     def speak(self):
         return f"{self.name} barks!"
 ```
+---
+
+# Exceptions
+
+---
+
+## Try-Except
+
+```py
+try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+
+except ValueError:
+    print("That is not a valid number")
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+else:
+    print(f"Result: {result}")
+finally:
+    print("Calculation Attempted")
+```
+---
+
+## Some common exceptions
+
+```py
+ValueError          # Invalid value
+TypeError           # Wrong type
+IndexError          # List index out of range
+KeyError            # Dictionary doesn't exist / Not found
+FileNotFoundError   # File doesn't exist   
+```
+---
+
+## Raising Exceptions
+
+```py
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+    return age
+```
