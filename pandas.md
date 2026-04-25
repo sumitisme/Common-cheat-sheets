@@ -135,3 +135,151 @@ df.reset_index()
 df.drop(columns = ['Length', 'Height'])
 ```
 ---
+
+# LOCATING ROWS AND COLUMNS
+
+---
+
+## loc, iloc, at, iat
+
+```py
+# To select rows 10-20
+df.iloc[10:20]
+
+# To select columns in positions 1, 2, 5 (first column is 0)
+df.iloc[:, [1, 2, 5]] # first part meaning range of rows, second meaning range of columns
+
+# To select all columns between x2 and x4 (inclusive)
+df.loc[:, 'x2':'x4']
+
+# To select rows meeting given logical condition and only at the specific columns
+df.loc[df['a'] > 10, ['a', 'c']]
+
+# To access single value by index
+df.iat[1, 2]
+
+# To access single value by label
+df.at[4, 'A']
+```
+---
+
+# SELECTING ROWS AND COLUMNS
+
+---
+
+## For Rows
+
+```py
+# Extract rows that meet logical criteria
+df[df.Length > 7]
+
+# Removing duplicate rows
+df.drop_duplicates()
+
+# Randomly selecting a fraction of rows
+df.sample(frac = 0.5)
+
+# Randomly select n rows
+df.sample(n = 10)
+
+# Selecting and ordering top n entries
+df.nlargest(n, 'value')
+
+# Selecting and ordering bottom n entries
+df.nsmallest(n, 'value')
+
+# Selecting first n rows
+df.head(n)
+
+# Selecting last n rows
+df.tail(n)
+```
+---
+
+## For Columns
+
+```py
+# Selecting multiple columns with specific names
+df[['width', 'length', 'species']]
+
+# Selecting a single column with a specific name
+df['width'] # or df.width
+
+# Selecting columns whose name (string) matches regex
+df.filter(regex = 'regex')
+```
+---
+
+# REGEX AND LOGIC
+
+---
+
+```py
+# Some regex examples
+'\.'                # Matches strings containing a period '.'
+'Length$'           # Matches strings ending with word 'Length'
+'^Sepal'            # Matches strings beginning with the world 'Sepal'
+'^x[1-5]$'          # Matches strings beginning with 'x' and ending witth 1, 2, 3, 4, 5
+'^(?!Species$).*'   # Matches strings except the string 'Species'
+
+# General note
+^       # First / Beginning
+$       # Ending
+```
+
+```py
+df.column.isin(values)  # Group membership
+pd.isnull(obj)          # is NaN
+pd.notnull(obj)         # is not NaN
+df.any()
+df.all()
+```
+
+---
+
+# BASIC FILTERING
+
+---
+
+## Using Query
+
+```py
+# You can filter rows using Boolean expressions
+df.query('Length > 7')
+df.query('Length > 7 and Width < 8')
+
+# Name is the column name
+df.query('Name.str.startswith("abc")', engine = "python")
+```
+---
+
+# METHOD CHAINING
+
+---
+
+```py
+df =    (pd.melt(df)
+            .rename(columns = {
+                'variable'  : 'var',
+                'value'     : 'val'
+            })
+            .query('val >= 200')
+        )
+```
+---
+
+# GROUPING DATA
+
+---
+
+## This will help with time series data if I want to compare for a single time instant
+
+```py
+df.groupby(by = "col")      # Return a GroupBy object, grouped by values in column named "col"
+df.groupby(level = "ind")   # Return a GroupBy object, grouped by values in index level named "ind"
+
+
+# you can use summary functions with the groups
+size()      # For size of each group
+agg()       # For aggregate group using function
+```
