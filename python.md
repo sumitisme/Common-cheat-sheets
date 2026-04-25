@@ -5,7 +5,7 @@
 <span style="color:pink">A lot of these commands are being run on the shell, not the .py program</span>
 </p>
 
-# Random Basics (Shell part and normal assignments)
+# RANDOM BASICS (SHELL PART AND NORMAL ASSIGNMENTS)
 ---
 
 ## Starting the interactive shell
@@ -64,7 +64,7 @@ permissions |= write    # bitwise "or" i.e. "|" operation is done between permis
 ```
 ---
 
-# Strings
+# STRINGS
 
 ---
 
@@ -136,7 +136,7 @@ r"This is a raw python\ttext"       # This is a raw python\ttext
 ```
 ---
 
-# Mathematical Operations
+# MATHEMATICAL oPERATIONS
 
 ---
 
@@ -165,7 +165,7 @@ sum([1, 2, 3])      # 6
 ```
 ---
 
-# Conditionals
+# CONDITIONALS
 
 ---
 
@@ -207,7 +207,7 @@ if not is_raining:
 ```
 ---
 
-# Loops
+# LOOPS
 
 ---
 
@@ -259,7 +259,7 @@ for i in range(10):
 ```
 ---
 
-# Functions
+# FUNCTIONS
 
 ---
 
@@ -326,7 +326,7 @@ evens   = list(filter(lambda x: x % 2 == 0, numbers))   # Checks which of the da
 
 ---
 
-# Classes
+# CLASSES
 
 ---
 
@@ -387,7 +387,7 @@ class Dog(Animal):
 ```
 ---
 
-# Exceptions
+# EXCEPTIONS
 
 ---
 
@@ -427,4 +427,269 @@ def validate_age(age):
     if age < 0:
         raise ValueError("Age cannot be negative")
     return age
+```
+---
+
+# COLLECTIONS
+
+---
+
+## Lists
+
+```py
+# Creating lists
+empty = []
+nums = [5]
+mixed = [1, "two", 3.0, True]
+
+# List methods
+nums.append("x")        # Add to end
+nums.insert(0, "y")     # Insert at index 0
+nums.extend(["z", 5])   # Extend with iterable
+nums.remove("x")        # Remove first "x"
+last = nums.pop()       # Pop returns last element
+
+# List indexing and checks
+fruits = ["banana", "apple", "orange"]
+fruits[0]           # "banana"
+fruits[-1]          # "orange" 
+"apple" in fruits   # True
+len(fruits)         # 3
+```
+---
+
+## Tuples
+
+```py
+# Creating tuples
+point = (3, 4)
+single = (1, )      # comma isn't a mistake here
+empty = ()
+
+# Basic tuple unpacking
+point = (3, 4)
+x, y = point
+x                   # 3
+y                   # 4
+
+# Extended unpacking
+first, *rest = (1, 2, 3, 4)
+first               # 1
+rest                # [2, 3, 4]
+```
+---
+
+## Sets
+
+```py
+# Creating Sets
+a = {1, 2, 3}
+b = set([3, 4, 4, 5])
+
+# Set Operations
+a | b       # {1, 2, 3, 4, 5}
+a & b       # {3}
+a - b       # {1, 2}
+a ^ b       # {1, 2, 4, 5}
+```
+---
+
+## Dictionaries
+
+```py
+# Creating Dictionaries
+empty = {}
+pet = {"name": "Leo", "age": 42}
+
+# Dictionary Operations
+pet["sound"] = "Purr!"      # Add key and value
+pet["age"] = 7              # Update Value
+age = pet.get("age", 0)     # Get with default
+del pet["sound"]            # Delete key
+pet.pop("age")              # Remove and return
+
+# Dictionary Methods
+pet = {"name": "Frieda", "sound": "Bark!"}
+pet.keys()              # dict_keys(['name', 'sound'])
+pet.values()            # dict_values(['Frieda', 'Bark!'])
+pet.items()             # dict_items([('name', 'Frieda'), ('sound', 'Bark!')])
+```
+---
+
+# COMPREHENSIONS
+
+---
+
+## List Comprehensions
+
+```py
+# Basic
+squares = [x**2 for x in range(10)]
+
+# With Condition
+evens = [x for x in range(20) if x % 2 == 0]
+
+# Nested
+matrix = [[i * j for j in range(3)] for i in range(3)]
+```
+---
+
+## Other Comprehensions
+
+```py
+# Dictionary Comprehension
+word_lengths = {word: len(word) for word in ["hello", "world"]}
+
+# Set Comprehension
+unique_lengths = {len(word) for word in ["who", "what", "why"]}
+
+# Generator Expression
+sum_squares = sum(x**2 for x in range(1000))
+```
+---
+
+# FILE I/O
+
+---
+
+## File Operations
+
+```py
+# Read an entire file
+with open("file.txt", mode = "r", encoding = "utf-8") as file:
+    content = file.read()
+
+# Read a file line by line
+with open("file.txt", mode = "r", encoding = "utf-8") as file:
+    for line in file:
+        print(line.strip())
+
+# Write a file
+with open("output.txt", mode = "w", encoding = "utf-8") as file:
+    file.write("Hello, World!\n")
+
+# Append to a file
+with open("log.txt", mode = "a", encoding = "utf-8") as file:
+    file.write("New log entry\n")
+```
+---
+
+# IMPORTS AND MODULES
+
+---
+
+## Import Styles
+
+```py
+# Import Entire module
+import math
+result = math.sqrt(16)
+
+# Import specific function
+from math import sqrt
+result = sqrt(16)
+
+# Import with alias
+import numpy as np
+array = np.array([1, 2, 3])
+
+# Import all (don't use this frequently)
+from math import *
+```
+---
+
+## Package imports
+
+```py
+# Import from package
+import package.module
+from package import module
+from package.subpackage import module
+
+# Import specific items
+from package.module import function, Class
+from package.module import name as alias
+```
+---
+
+# VIRTUAL ENVIRONMENTS
+
+---
+
+## Create a virtual environment
+
+```shell
+python -m venv .venv
+```
+---
+
+## Activate the virtual environment (powershell)
+
+```shell
+.venv\Scripts\activate.bat
+```
+---
+
+## Activate the virtual environment (Linux, WSL)
+
+```shell
+source .venv/bin/activate
+```
+---
+
+## Deactivating the virtual environment
+
+```shell
+(.venv) $ deactivate
+```
+---
+
+# Packages in virtual environment
+
+---
+
+## Installing package using pip
+
+```shell
+# Use the second one rather than the first one. It's good practice
+
+pip install package_name # This installs it in the system
+
+# and
+
+python -m pip install requests # This installs stuff in the current environment
+```
+---
+
+## Save Requirements and Install requirements from file
+
+```shell
+python -m pip freeze > requirements.txt
+python -m pip install -r requirements.txt
+```
+---
+
+# MISCELLANEOUS
+
+---
+
+## Pythonic Constructs
+
+```py
+# Swap Variables
+a, b = b, a
+
+# Flatten a list of lists
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat = [item for sublist in matrix for item in sublist]
+
+# Remove Duplicates
+unique_unordered = list(set(my_list))
+
+# Remove Duplicates, preserve order
+unique = list(dict.fromkeys(my_list))
+
+# Count occurrences
+from collections import Counter
+counts = Counter(my_list)
 ```
