@@ -136,7 +136,7 @@ r"This is a raw python\ttext"       # This is a raw python\ttext
 ```
 ---
 
-# MATHEMATICAL oPERATIONS
+# MATHEMATICAL OPERATIONS
 
 ---
 
