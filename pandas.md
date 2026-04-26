@@ -272,7 +272,7 @@ df =    (pd.melt(df)
 
 ---
 
-## This will help with time series data if I want to compare for a single time instant
+## This will help with my original time series forecasting plans
 
 ```py
 df.groupby(by = "col")      # Return a GroupBy object, grouped by values in column named "col"
@@ -282,4 +282,32 @@ df.groupby(level = "ind")   # Return a GroupBy object, grouped by values in inde
 # you can use summary functions with the groups
 size()      # For size of each group
 agg()       # For aggregate group using function
+```
+---
+
+## Combining Datasets
+
+```py
+# Standard joins
+
+# Joins matching rows from bdf to adf
+pd.merge(adf, bdf, how = 'left', on = 'x1') # x1 is a column name here btw
+
+# Joins matching rows from adf to bdf
+pd.merge(adf, bdf, how = 'right', on = 'x1')
+
+# Joins data while retaining values on both sets
+pd.merge(adf, bdf, how = 'inner', on = 'x1')
+
+# Joins data while retaining values on all rows
+pd.merge(adf, bdf, how = 'outer', on = 'x1')
+
+
+# Filtering joins
+
+# All rows in adf that have a match in bdf
+adf[adf.x1.isin(bdf.x1)]
+
+# All rows in adf that don't have a match in bdf
+adf[~adf.x1.isin(bdf.x1)]
 ```
