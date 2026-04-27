@@ -391,3 +391,95 @@ df.expanding()
 # Return a rolling object allowing summary functions to be applied to windows of length n
 df.rolling(n)
 ```
+---
+
+# Summarizing Data
+
+---
+
+## General handling
+
+```py
+# Number of rows in a dataframe
+len(df)
+
+# Number of rows with each unique value of variable
+df['w'].value_counts()
+
+# Tuple of number of rows, number of columns in a DataFrame
+df.shape
+
+# number of distinct values in a column
+df['w'].nunique()
+
+# Basic Descriptive and statistics for each column (or GroupBy)
+df.describe()
+
+# Prints a concies summary of the Dataframe
+df.info()
+
+# Prints the memory usage of each column in the DataFrame
+df.memory_usage()
+
+# Prints a series with the dtype of each column in the DataFrame
+df.dtypes()
+```
+
+```py
+# Summary functions
+
+# Sum values of each object
+sum()
+
+# Minimum value in each object
+min()
+
+# Maximum value in each object
+max()
+
+# Count non-NaN values of each object
+count()
+
+# Median value of each object
+median()
+
+# Mean value of each object
+mean()
+
+# Variance of each object
+var()
+
+# Quantiles of each object
+quantile([0.25, 0.75])
+
+# apply function to each object
+apply(function) # "function" being the function
+
+# standard deviation of each object
+std()
+```
+---
+
+# PLOTTING (IMPORTANT)
+
+---
+
+## General plots
+
+```py
+# For a line-graph
+df.plot()
+
+# For a scatter graph
+df.plot.scatter(x = 'w', y = 'h')
+
+# For a bar graph
+df.plot.bar()
+
+# For a box-plot
+df.plot.boxplot()
+```
+
+```py
+# Editing the plot function
+```
