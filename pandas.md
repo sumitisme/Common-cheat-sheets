@@ -81,6 +81,77 @@ df = pd.DataFrame(
 ```
 ---
 
+# INPUT / OUTPUT
+
+---
+
+## Reading from .csv, .xlsx, .html, sql and so on
+
+```py
+# Reading data from csv file
+df = pd.read_csv(filepath) # You can read from URLs too by using pd.read_csv(URL)
+
+# Reading data from html file
+df = pd.read_html(filepath)
+
+# Reading data from xlxs
+df = pd.read_excel(filepath)
+
+# Reading data from SQL file
+df = pd.read_sql(filepath)
+```
+---
+
+## Writing data into stuff
+
+```py
+# Writing to paraquet file
+df.to_paraquet(filepath)
+
+# Writing to a feather file
+df.to_feather(filepath)
+
+# Writing data to an HDF file
+df.to_hdf(filepath)
+
+# Copy object to the system clipboard
+df.to_clipboard()
+```
+---
+
+# DATE TIME
+
+---
+
+## General exractions
+
+```py
+# Consider a series s containing data of type datetime
+
+# Extract the year
+s.dt.year
+
+# Extract the month
+s.dt.month
+
+# Extract the day (int) from the date
+s.dt.day
+
+# Find which quarter the date lies in
+s.dt.quarter
+
+# Extract the hour
+s.dt.hour
+
+# Extract the minute
+s.dt.minute
+
+# Extract the second
+s.dt.second
+```
+
+---
+
 # RESHAPING THE DATA
 
 ---
@@ -506,4 +577,31 @@ df.plot(stacked = True)
 
 # Sets the transparency of the plot to 0.5
 df.plot(alpha = 0.5)
+```
+---
+
+# CHANGING TYPE
+
+---
+
+## General functions
+
+```py
+# Convert non-numeric types to numeric
+pd.to_numeric(data)
+
+# Convert non-datetimme types to datetime type
+pd.to_datetime(data)
+
+# Convert non-timedelta types too timedelta
+pd.to_timedelta(data)
+
+# Convert data to (almost) any given type including categorical
+df.astype(type)
+
+# Attempts to infer a better type for object type data
+df.infer_objects()
+
+# Convert columns to best possible dtypes
+df.convert_dtypes()
 ```
