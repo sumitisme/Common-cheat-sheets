@@ -460,7 +460,7 @@ std()
 ```
 ---
 
-# PLOTTING (IMPORTANT)
+# PLOTTING (Will probably use matplotlib for these but still worth looking into)
 
 ---
 
@@ -479,7 +479,31 @@ df.plot.bar()
 # For a box-plot
 df.plot.boxplot()
 ```
+---
+
+## Editing/labeling/decorating the plot function
 
 ```py
-# Editing the plot function
+# Separate into different graphs for each column in the DataFrame
+df.plot(subplots = True)
+
+# Sets the title of the graph
+df.plot(title = "Graph of A against B")
+
+# Creating a cumulative plot
+df.plot(cumulative = True)
+
+# Arguments can be combined for more flexibility when graphing, this would plot a separate line graph for each of the 3 columns of the DataFrame. 
+# First string means left-most column
+df.plot(subplots = True, title = ['col1', 'col2', 'col3'])
+
+# Set the number of bins into which data is grouped (Histograms)
+df.plot(bins = 30)
+
+
+# Stacks the data for the columns on top of each other. (only works for bar, barh and area)
+df.plot(stacked = True)
+
+# Sets the transparency of the plot to 0.5
+df.plot(alpha = 0.5)
 ```
