@@ -311,3 +311,19 @@ adf[adf.x1.isin(bdf.x1)]
 # All rows in adf that don't have a match in bdf
 adf[~adf.x1.isin(bdf.x1)]
 ```
+---
+
+## Set-like operations
+
+```py
+# Intersection
+pd.merge(ydf, zdf)
+
+# Union
+pd.merge(ydf, zdf, how = 'outer')
+
+# Rows that appear in ydf but not in zdf (Setdiff)
+pd.merge(ydf, zdf, how = 'outer', indicator = True)
+    .query('_merge == "left_only"')
+    .drop(columns = ['_merge'])
+```
