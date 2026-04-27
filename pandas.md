@@ -327,3 +327,67 @@ pd.merge(ydf, zdf, how = 'outer', indicator = True)
     .query('_merge == "left_only"')
     .drop(columns = ['_merge'])
 ```
+---
+
+# HANDLING MISSING DATA
+
+---
+
+## Filling with NaN
+
+```py
+# Drops rows with any column having NaN
+df.dropna()
+
+# Replaces all NaN data with "value"
+df.fillna()
+```
+---
+
+# MAKING NEW COLUMNS
+
+---
+
+## General functions involved for this
+
+```py
+# Compute and append one or more new columns
+df.assign(Area=lambda df: df.Length * df.Height)
+
+# Adding a single column
+df['Volume'] = df.Length * df.Height * df.Depth
+
+# Bin column into n buckets
+pd.qcut(df.col, n, labels = False)
+```
+
+```py
+# Pandas also provides a large set of vector functions that operate on all columns of a DataFrame or a single selected column (A pandas series). These function produce vectors of values for each of the columns, or a single Series for the individual Series
+
+# Element-wise max
+max(axis = 1)
+
+# Element-wise min
+min(axis = 1)
+
+# Trim values at input thresholds
+clip(lower = -10, upper = 10)
+
+# Absolute value
+abs()
+```
+---
+
+# WINDOWS OF DATA
+
+---
+
+## Expanding and rolling windows
+
+```py
+# Return an Expanding object allowing summaryr functions to be applied cumulatively
+df.expanding()
+
+# Return a rolling object allowing summary functions to be applied to windows of length n
+df.rolling(n)
+```
