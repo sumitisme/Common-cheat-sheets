@@ -123,7 +123,7 @@ df.to_clipboard()
 
 ---
 
-## General exractions
+## General extractions
 
 ```py
 # Consider a series s containing data of type datetime
@@ -149,7 +149,6 @@ s.dt.minute
 # Extract the second
 s.dt.second
 ```
-
 ---
 
 # RESHAPING THE DATA
@@ -281,9 +280,11 @@ df.filter(regex = 'regex')
 ```
 ---
 
-# REGEX AND LOGIC
+# REGEX (Regular Expressions) AND LOGIC
 
 ---
+
+## REGEX
 
 ```py
 # Some regex examples
@@ -297,6 +298,9 @@ df.filter(regex = 'regex')
 ^       # First / Beginning
 $       # Ending
 ```
+---
+
+## EXTRA LOGIC FOR PYTHON
 
 ```py
 df.column.isin(values)  # Group membership
@@ -305,7 +309,6 @@ pd.notnull(obj)         # is not NaN
 df.any()
 df.all()
 ```
-
 ---
 
 # BASIC FILTERING
@@ -353,6 +356,37 @@ df.groupby(level = "ind")   # Return a GroupBy object, grouped by values in inde
 # you can use summary functions with the groups
 size()      # For size of each group
 agg()       # For aggregate group using function
+
+
+# Copy with values shifted by 1
+shift(1)
+
+# Copy with values lagged by 1
+shift(-1)
+
+# Ranks with no gaps
+rank(method = 'dense')
+
+# Cumulative sum
+cumsum()
+
+# Cumulative max
+cummax()
+
+# Cumulative min
+cummin()
+
+# Cumulative Product
+cumprod()
+
+# Ranks. Ties get min rank
+rank(method = 'min')
+
+# Ranks. Ties go to first value
+rank(method = 'first')
+
+# Ranks rescaled to interval [0, 1] 
+rank(pct = True)
 ```
 ---
 
@@ -404,7 +438,7 @@ pd.merge(ydf, zdf, how = 'outer', indicator = True)
 
 ---
 
-## Filling with NaN
+## Dropping or Filling with NaN
 
 ```py
 # Drops rows with any column having NaN
@@ -604,4 +638,56 @@ df.infer_objects()
 
 # Convert columns to best possible dtypes
 df.convert_dtypes()
+```
+---
+
+# STRING OPERATIONS
+
+---
+
+## General functions
+
+```py
+# Returns a series with the integer counts in each element
+s.str.count(pattern)
+
+# Concatenate elements into a single string
+s.str.cat()
+
+# Returns a series with the data at the given index for each element
+s.str.get(index)
+
+# Splits the string on the first instance of the separator
+s.str.partition(sep)
+
+# Returns a series where each element has been concatenated
+s.str.join(sep)
+
+# Slices each string
+s.str.slice(start, stop, step)
+
+# Converts the first character of each word to be a capital
+s.str.title()
+
+# Use regex to replace patterns in each string
+s.str.repalce(pat, rep)
+
+# Returns a series with the lengths of each element
+s.str.len()
+
+# Checks whether each element is alpha-numeric
+s.str.isalnum()
+```
+---
+
+# MAPPING
+
+---
+
+```py
+# Returns a copy of the series where every entry is doubled
+s.map(lambda x: 2*x)
+
+# Returns a series with the difference of the maximum and minimum values of each row of the DataFrame
+df.apply(lambda s: s.max() = s.min(), axis = 1)
 ```
