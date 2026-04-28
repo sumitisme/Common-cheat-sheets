@@ -2,6 +2,17 @@
 
 ---
 
+# IMPORTING PANDAS
+
+---
+
+```py
+# Formality
+import pandas as pd
+```
+
+---
+
 # CREATING DATAFRAMES
 
 ---
