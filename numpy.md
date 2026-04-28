@@ -91,7 +91,7 @@ np.info(np.ndarray.dtype)
 ```
 ---
 
-# Inspecting your array
+# INSPECTING YOUR ARRAY
 
 ---
 
