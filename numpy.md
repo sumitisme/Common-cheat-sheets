@@ -447,3 +447,196 @@ np.floor(arr)
 # Rounds each element to the nearest integer
 np.round(arr)
 ```
+---
+
+# STATISTICS
+
+---
+
+## Mean
+
+```py
+# Returns mean of arr along specified axis
+np.mean(arr, axis = 0)
+```
+---
+
+## Sum
+
+```py
+# Returns the sum of elements in arr
+arr.sum()
+```
+---
+
+## Min
+
+```py
+# Returns minimum value of arr
+arr.min()
+```
+---
+
+## Max
+
+```py
+# Returns maximum value of arr along specified axis
+arr.max(axis = 0)
+```
+---
+
+## Var
+
+```py
+# Returns variance of arr
+np.var(arr)
+```
+---
+
+## Std
+
+```py
+# Returns standard deviation of arr along specified axis
+np.std(arr, axis = 1)
+```
+---
+
+## CORRCOEF
+
+```py
+# Returns correlation coefficent of arr
+arr.corrcoef()
+```
+---
+
+# WORKING WITH DATA (A bunch of stuff repeated here)
+
+---
+
+## Coverting a list of lists
+
+```py
+# Converting a list of lists into a 2d array
+
+import csv
+f = open("nyc_taxis.csv", "r")
+taxi_list = list(csv.reader(f))
+taxi = np.array(taxi_list)
+```
+---
+
+## Selecting Rows
+
+```py
+# Select the second row in "taxi"
+second_row = taxi[1]
+
+# Select all rows from the second row onward in "taxi"
+all_but_first_row = taxi[1:]
+
+# Select the element from the fifth row and second column in "taxi"
+fifth_row_second_column = taxi[4, 1]
+```
+---
+
+## Selecting columns
+
+```py
+# Select all values from the second column in "taxi"
+second_column = taxi[:, 1]
+
+# Select the second and third columns, then the second, fourth, and sixth columns in "taxi"
+second_third_columns = taxi[:, 1:3]
+cols = [1, 3, 5]
+second_fourth_sixth_columns = taxi[:, cols]
+
+# Select a slice of rows 2 to 4 and columns 1 to 3 in "taxi"
+twod_slice = taxi[1:4, :3]
+```
+---
+
+## Vector operations
+
+```py
+# Element-wise addition of two array objects
+vector_a + vector_b
+
+# Element-wise subtraction of two array objects
+vector_a - vector_b
+
+# Element-wise multiplication of two array objects
+vector_a * vector_b
+
+# Element-wise division of two array objects
+vector_a / vector_b
+```
+---
+
+## Statistics for 1D arrays
+
+```py
+# Return the minimum value of "array_1d"
+array_1d.min()
+
+# Return the maximum value of "array_1d"
+array_1d.max()
+
+# Calculate the average / mean of values in "array_1d"
+array_1d.mean()
+
+# Calculate the sum of the values in "array_1d"
+array_1d.sum()
+```
+---
+
+## Statistics for 2d arrays
+
+```py
+# Return the maximum value for the entire "array_2d"
+array_2d.max()
+
+# Return the maximum value in each row in "array_2d"
+array_2d.max(axis = 1)
+
+# Return the maximum value in each column in "array_2d"
+array_2d.max(axis = 0)
+```
+---
+
+## Creating an array from a csv file
+
+```py
+# Load data from the nyc_taxis.csv file into an array, skipping the header row
+taxi = np.genfromtxt('nyc_taxis.csv', delimiter = ',', skip_header = 1)
+```
+---
+
+## Working with boolean arrays
+
+```py
+# Create a Boolean array for elements less than 5
+np.array([2, 4, 6, 8]) < 5
+
+# Use Boolean filtering to return elements less than 5 from an array
+a = np.array([2, 4, 6, 8])
+filter = a < 5
+a[filter] # Returns [2, 4]
+
+# Use Boolean filtering to return rows with tip_amount > 50 and columns 6 to 14
+tip_amount = taxi[:, 12]
+tip_bool = tip_amount > 50
+top_tips = taxi[tip_bool, 5:14]
+```
+---
+
+## Assigning array values
+
+```py
+# Assign values to specific elements, a column, and a slice in "taxi"
+taxi[1066, 5] = 1
+taxi[:, 0] = 16
+taxi[550:552, 7] = taxi[:, 7].mean()
+
+# Use Boolean indexing to assign a value of 1 in column index 15 to rows where the 6th column equals 2
+taxi[taxi[:, 5] == 2, 15] = 1
+```
