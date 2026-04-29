@@ -304,3 +304,38 @@ gru_stack = nn.GRU( input_size = 10,
                     hidden_size = 10,
                     num_layers = 3) # 3 single GRU cells stacked on top of each other
 ```
+---
+
+# ACTIVATION FUNCTIONS
+
+---
+
+```py
+# ReLU (rectified Linear Unit)
+relu = nn.ReLu()
+
+# Sigmoid
+sigmoid = nn.Sigmoid()
+
+# Softmax
+softmax = nn.Softmax()
+```
+---
+
+# LOSS FUNCTIONS
+
+---
+
+```py
+# L1Loss - also known as MAE
+loss_fn = nn.L1Loss()
+
+# MSELoss - Mean Squared Error
+loss_fn = nn.MSELoss()
+
+# Binary cross entropy (for binary classification problems)
+loss_fn = nn.BCEWithLogitsLoss()
+
+# Cross entropy (for multi-class classification problems)
+loss_fn = nn.CrossEntropyLoss()
+```
