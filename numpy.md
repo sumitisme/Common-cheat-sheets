@@ -159,7 +159,7 @@ np.view(dtype)
 arr.sort()
 
 # Sorts specific axis of arr
-arr.sort(axis = 0)
+arr.sort(axis = 0) # axis = 0 means row, axis = 1 means column
 
 # Flattens 2D array "two_d_arr" to 1D
 two_d_arr.flatten()
@@ -205,3 +205,245 @@ np.delete(arr, 3, axis = 0)
 np.delete(arr, 4, axis = 1)
 ```
 ---
+
+# COMBINING AND SPLITTING
+
+---
+
+## Concatenate
+
+```py
+# Adds arr2 as rows to the end of arr1
+np.concatenate((arr1, arr2), axis = 0)
+
+# Adds arr2 as columns to the end of arr1
+np.concatenate((arr1, arr2), axis = 1)
+```
+---
+
+## Split
+
+```py
+# Splits arr into 3 sub-arrays
+np.split(arr, 3)
+```
+---
+
+## Hsplit
+
+```py
+# Splits arr horizontally on the index 5
+np.hsplit(arr, 5)
+```
+---
+
+# INDEXING AND SLICING
+
+---
+
+## Indexing
+
+```py
+# Returns the element at index 5
+arr[5]
+
+# Returns the 2D array element on index [2][5]
+arr[2, 5]
+
+# Assigns array element on index 1 the value 4
+arr[1] = 4
+
+# Assigns array element on index [1][3] the value 10
+arr[1, 3] = 10
+```
+---
+
+## Slicing
+
+```py
+# Returns the elements at indices 0, 1, 2
+arr[0:3]
+
+# Returns the elements on rows 0, 1, 2 in column index 4
+arr[0:3, 4]
+
+# Returns the elements at index 0, 1
+arr[:2]
+
+# Returns column index 1, all rows
+arr[:, 1]
+```
+---
+
+# CONDITIONAL STATEMENTS
+
+---
+
+```py
+# Returns an array of boolean values
+arr < 5
+
+# For the following to be true, both must be true
+(arr1 < 3) & (arr2 > 5)
+
+# Inverts a boolean array
+~arr
+
+# Returns array elements less than 5
+arr[arr < 5]
+
+# For the following to be true, at least one must be true
+(arr1 < 3) | (arr2 > 5)
+```
+---
+
+# SCALAR MATH
+
+---
+
+## Add
+
+```py
+# Add 1 to each array element
+np.add(arr, 1)
+```
+---
+
+## Subtract
+
+```py
+# Subtract 2 from each element
+np.subtract(arr, 2)
+```
+---
+
+## Mutiply
+
+```py
+# Multiply each array element by 3
+np.multiply(arr, 3)
+```
+---
+
+## Divide
+
+```py
+# Divide each array element by 4 (returns np.nan for division by zero)
+np.divide(arr, 4)
+```
+---
+
+## Power
+
+```py
+# Raise each array element to the power of 5
+np.power(arr, 5)
+```
+---
+
+# VECTOR MATH
+
+---
+
+## Add
+
+```py
+# Elementwise add arr1 to arr2
+np.add(arr1, arr2)
+```
+---
+
+## Subtract
+
+```py
+# Elementwise subract arr2 from arr1
+np.subtract(arr1, arr2)
+```
+---
+
+## Multiply
+
+```py
+# Elementwise multiply arr1 by arr2
+np.multiply(arr1, arr2)
+```
+---
+
+## Divide
+
+```py
+# Elementwise divide arr1 by arr2
+np.divide(arr1, arr2)
+```
+---
+
+## Power
+
+```py
+# Elementwise raise arr1 to the power of arr2
+np.power(arr1, arr2)
+```
+---
+
+## Array_equal
+
+```py
+# Following returns True if the arrays have the same elements and shape
+np.array_equal(arr1, arr2)
+```
+---
+
+## Sqrt
+
+```py
+# Square root of each element in the array
+np.sqrt(arr)
+```
+---
+
+## Sin
+
+```py
+# Sine of each element in the array
+np.sin(arr)
+```
+---
+
+## Log
+
+```py
+# Natural log of each element in the array
+np.log(arr)
+```
+---
+
+## Abs
+
+```py
+# Absolute value of each element in the array
+np.abs(arr)
+```
+---
+
+## Ceil
+
+```py
+# Does the ceiling operation on each element of arr
+np.ceil(arr)
+```
+---
+
+## Floor
+
+```py
+# Does the floor operation on each element of arr
+np.floor(arr)
+```
+---
+
+## Round
+
+```py
+# Rounds each element to the nearest integer
+np.round(arr)
+```
