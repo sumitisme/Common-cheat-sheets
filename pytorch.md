@@ -230,7 +230,7 @@ identity_layer = nn.Identity()
 
 ## Convolutional Layers (For making Convolutional Neural Networks and CNN's)
 
-<p>PyTorch has several in-built convolutional layers. Naming of convolutional layers usually follows torch.nn.convXd where "X" can be a value of 1, 2, 3</p><br><br>
+<p>PyTorch has several in-built convolutional layers. Naming of convolutional layers usually follows torch.nn.convXd where "X" can be a value of 1, 2, 3</p><br>
 <p>X represents the number of dimensions the convolution will operate over, 1 for single dimension text, 2 for two dimension images, 3 for objects like videos. (height x width x time)</p><br>
 
 ```py
@@ -250,4 +250,57 @@ conv2d = nn.Conv1d( in_channels = 3, # 3 channels for color images (red, green, 
 conv3d = nn.Conv3d( in_channels = 3,
                     out_channels = 10,
                     kernel_size = 3)
+```
+---
+
+## Transformer Layers (for making Transformer models)
+
+<p>PyTorch has inbuilt Transformer Layers.</p><br>
+<p>Using in-built PyTorch Transformer Layers can speed up the process because of "Pytorch's BetterTransformer"</p><br>
+
+```py
+# Create a Transformer model (Based on the paper "Attention Is All You Need" - https://arxiv.org/abs/1706.03762)
+transformer_model = nn.Transformer()
+
+# Create a single Transformer encoder cell
+transformer_encoder = nn.TransformerEncoderLayer(   d_model = 768, # embedding dimension
+                                                    nhead = 12)    # number of attention heads
+
+# Stacking together Transformer encoder cells
+transformer_encoder_stack = nn.TransformerEncoder(  encoder_layer = transformer_encoder, # From above
+                                                    num_layers = 6) # 6 Transformer encoders stacked on top of each other
+
+
+# Create a single Transformer decoder cell
+transformer_decoder = nn.TransformerDecoderLayer(d_model = 768,
+                        nhead = 12)
+
+# Stack together Transformer decoder cells
+transformer_decoder_stack = nn.TransfomerDecoder(   decoder_layer = transformer_decoder,   # From above
+                                                    num_layers = 6) # 6 Transformer decoders stacked on top of each other
+```
+---
+
+## Recurrent Layers (for making Recurrent Neural Networks (RNN's))
+
+<p>PyTorch has in-built support for Recurrent Neural Network layers such as LSTM (Long Short Term Memory) and GRU (Gated Recurrent Unit)</p><br>
+
+```py
+# Create a single LSTM cell
+lstm_cell = nn.LSTMCell(input_size = 10,
+                        hidden_size = 10)
+
+# Stack together LSTM cells
+lstm_stack = nn.LSTM(   input_size = 10,
+                        hidden_size = 10,
+                        num_layers = 3) # 3 single LSTM cells stacked on top of each other
+
+# Create a single GRU cell
+gru_cell = nn.GRUCell(  input_size = 10,
+                        hidden_size = 10)
+
+# Stack together GRU cells
+gru_stack = nn.GRU( input_size = 10,
+                    hidden_size = 10,
+                    num_layers = 3) # 3 single GRU cells stacked on top of each other
 ```
