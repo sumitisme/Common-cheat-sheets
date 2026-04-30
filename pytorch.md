@@ -339,3 +339,162 @@ loss_fn = nn.BCEWithLogitsLoss()
 # Cross entropy (for multi-class classification problems)
 loss_fn = nn.CrossEntropyLoss()
 ```
+---
+
+# OPTIMIZERS
+
+---
+
+```py
+# Create a baseline model
+model = nn.Transformer()
+
+# SGD (Stochastic Gradient Descent)
+optimizer = torch.optim.SGD(lr = 0.1, # Set the learning rate (This is required)
+                            params = model.parameters()) # Tell the optimizer what parameters to optimize
+```
+
+```py
+# Create a baseline model
+model = nn.Transformer()
+
+# Adam Optimizer
+optimizer = torch.optim.Adam(   lr = 0.001, # set the learning rate
+                                params = model.parameters()) # Tell the optimizer what parameters to optimize
+```
+---
+
+# CREATE DATA
+
+---
+```py
+# Create *known* parameters
+weight = 0.7
+bias = 0.3
+
+# Create data
+start = 0
+end = 1
+step = 0.02
+
+X = torch.arange(start, end, step).unsqueeze(dim = 1) # data
+y = weight * X + bias # Labels (want model to learn from data to predict these)
+
+X[:10], y[:10]
+```
+
+```py
+# Create train/test split
+train_split = int(0.8 * len(X)) # 80% of data used for training set, 20% for testing
+X_train, y_train = X[:train_split], y[:train_split]
+X_test, y_test = X[train_split:], y[train_split:]
+
+len(X_train), len(y_train), len(X_test), len(y_test)
+```
+---
+
+# CREATE A MODEL
+
+---
+
+```py
+from torch import nn
+
+# Option 1 - subclass torch.nn.Module
+class LinearRegressionModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # Use nn.Linear() for creating the model parameter
+        self.linear_layer = nn.Linear(  in_features = 1,
+                                        out_features = 1)
+
+    # Define the forward computation (input data x flows through nn.Linear())
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.linear_layer(x)
+
+model_0 = LinearRegressionModel()
+model_0, model_0.state_dict()
+```
+---
+
+```py
+# Creating the same model as above but using torch.nn.Sequential
+from torch import nn
+
+# Option 2 - use torch.nn.Sequential
+model_1 = torch.nn.Sequential(
+    nn.Linear(  in_features = 1
+                out_features = 1)
+)
+
+model_1, model_1.state_dict()
+```
+---
+
+# SETUP LOSS FUNCTION AND OPTIMIZER
+
+---
+
+```py
+# Create loss function
+loss_fn = nn.L1Loss()
+
+# Create Optimizer
+optimizer = torch.optim.SGD(params = model_1.parameters(), # optimize newly created model's parameters
+                            lr = 0.01)
+```
+---
+
+# CREATE A TRAINING / TESTING LOOP
+
+---
+
+```py
+torch.manual_seed(42)
+
+# Setting the number of epochs
+epochs = 1000
+
+# Put data on the available device
+# Without this, an error will happen (not all data on target device)
+X_train = X_train.to(device)
+X_test = X_test.to(device)
+y_train = y_train.to(device)
+y_test = y_test.to(device)
+
+# Put model on the available device
+# With this, an error will happen (the model is not on target device)
+model_1 = model_1.to(device)
+
+for epoch on range(epochs):
+    ### Training
+    model_1.train() # train mode is on by default after construction
+
+    # 1. Forward pass
+    y_pred = model_1(X_train)
+
+    # 2. Calculate loss
+    loss = loss_fn(y_pred, y_train)
+
+    # 3. Zero grad optimizer
+    optimizer.zero_grad()
+
+    # 4. Loss backward
+    loss.backward()
+
+    # 5. Step the optimizer
+    optimizer.step()
+
+    ### Testing
+    model_1.eval() # Put the model in evaluation mode for testing (inference)
+
+    # 1. Forward pass
+    with torch.inference_mode():
+        test_pred = model_1(X_test)
+
+        # 2. Calculate the loss
+        test_loss = loss_fn(test_pred, y_test)
+    
+    if epoch % 100 == 0:
+        print(f"Epoch: {epoch} | Train loss: {loss} | Test loss: {test_loss}")
+```
